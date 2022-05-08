@@ -5,6 +5,7 @@ describe('Album') do
 
   before(:each) do
     Album.clear()
+    Song.clear()
   end
 
   describe('#save') do
