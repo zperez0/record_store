@@ -2,11 +2,6 @@ require('spec_helper')
 
 describe('Album') do
 
-  before(:each) do
-    Album.clear()
-    Song.clear()
-  end
-
   describe('#save') do
     it("saves an album") do
       album = Album.new("Giant Steps", nil) # nil added as 2nd argument
