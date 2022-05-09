@@ -33,7 +33,10 @@ class Album
   end
 
   def self.find(id)
-    @@albums[id]
+    album = DB.exec("SELECT * FROM albums WHERE id = #{id};").first
+    name = album.fetch("name")
+    id = album.fetch("id").to_i
+    Album.new({:name => name, :id => id})
   end
 
   def update(name)
