@@ -1,14 +1,11 @@
 class Album
-  attr_reader :name, :id # save - instance method needs reader methods
+  attr_reader :id
   attr_accessor :name
   
 
-  @@albums = {}
-  @@total_rows = 0 #added a class variable to keep track of total rows & increment the value when an Album is added
-
-  def initialize(name, id)
-    @name = name
-    @id = id || @@total_rows += 1 # if id has a value, becomes value of id. if nil (falsy), value of id will be @@total_rows += 1
+  def initialize(attributes)
+    @name = attributes.fetch(:name)
+    @id = attributes.fetch(:id)
   end
 
   def self.all()
