@@ -84,7 +84,6 @@ describe('Song') do
     end
   end
 
-  # -----WIP-----
   describe('.find_by_album') do
     it("finds songs for an album") do
       album = Album.new({:name => "Blue", :id => nil})
