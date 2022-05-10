@@ -34,7 +34,6 @@ class Song
     @id = result.first().fetch("id").to_i
   end
 
-  # WIP - BREAKING
   def self.find(id)
     song = DB.exec("SELECT * FROM songs WHERE id = #{id};").first
     if song
