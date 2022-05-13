@@ -9,6 +9,9 @@ require('pg')
 
 DB = PG.connect({:dbname => 'record_store'})
 
+
+#  ----Album route----
+
 get('/') do
   # binding.pry
   redirect to('/albums')
@@ -46,7 +49,7 @@ end
 
 patch('/albums/:id') do
   @album = Album.find(params[:id].to_i())
-  @album.update(params[:name])
+  @album.update({:name => params[:name], :artist_name => params[:artist_name]})
   redirect to('/albums')
   # @albums = Album.all
   # erb(:albums)
@@ -59,6 +62,9 @@ delete('albums/:id') do
   # @albums = Album.all
   # erb(:albums)
 end
+
+
+#  ----Song route----
 
 # get the detail for a specific song (ex: lyrics & songwriters)
 get('/albums/:id/songs/:song_id') do
@@ -91,14 +97,57 @@ delete('/albums/:id/songs/:song_id') do
   erb(:album)
 end
 
+
+#  ----Search route----
+
 # display search results page
 get('/results') do
-
   erb(:search_results)
 end
 
 # display results
 post('/results') do
-  
   erb(:search_results)
 end
+
+#  ----Artist route----
+
+# get a list of all artist
+get('/artists') do
+  @artist = Artist.all
+  erb(:artists)
+end
+
+# add a new artist
+get('/artists/new') do
+  erb(:new_artist)
+end
+
+# look at the detail page for a single album
+get('/artists/:id') do
+  @artist = Artist.find(params[:id].to_i())
+  erb(:artist)
+end
+
+# add a new album to the list of artists
+post('/artists') do
+  name = params[:artist_name]
+  artist = Artist.new({:name => name, :id => nil})
+  artist.save()
+  redirect to('/artist')
+end
+
+# update a signal album
+patch('/artists/:id') do
+  @artist = Artist.find(params[:id].to_i())
+  @artist.update(:name => params[:name], :album_name => params[:album_name])
+  redirect to('/artists')
+end
+
+# delete an album from list
+delete('/artists/:id') do
+  @artist = Artist.find(params[:id].to_i())
+  @artist.delete()
+  redirect to('/artists')
+end
+
