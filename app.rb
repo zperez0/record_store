@@ -114,8 +114,8 @@ end
 
 # get a list of all artist
 get('/artists') do
-  @artist = Artist.all
-  erb(:artists)
+  @artists = Artist.all
+  erb(:albums) # changed from artists
 end
 
 # add a new artist
@@ -134,7 +134,7 @@ post('/artists') do
   name = params[:artist_name]
   artist = Artist.new({:name => name, :id => nil})
   artist.save()
-  redirect to('/artist')
+  redirect to('/artists')
 end
 
 # update a signal album
@@ -151,3 +151,5 @@ delete('/artists/:id') do
   redirect to('/artists')
 end
 
+# WIP: add artist to homepage / currently breaking
+# check artists.erb (copied over artist code to albums.erb)
