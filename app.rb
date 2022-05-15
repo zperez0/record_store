@@ -115,7 +115,7 @@ end
 # get a list of all artist
 get('/artists') do
   @artists = Artist.all
-  erb(:albums) # changed from artists
+  erb(:artists)
 end
 
 # add a new artist
