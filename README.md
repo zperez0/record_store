@@ -12,12 +12,12 @@ A backend web application for a fictitious record store. The user can add, edit,
 * _pry_
 * _Capybara_
 * _Sinatra_
-* _Postgres_
+* _PostgreSQL_
 
 
 ## Description
 
-This application was created to demonstrate my knowledge and understanding of using CRUD functionality, routing with Sinatra, testing with Capybara and creating a database with Postgres/SQL.
+This application was created to demonstrate my knowledge and understanding of using CRUD functionality, routing with Sinatra, testing with Capybara and creating a database with PostgreSQL.
 
 WIP: need to display albums under artists
 
