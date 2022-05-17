@@ -49,7 +49,7 @@ rspec
 ```
 
 ## Database Schema
-![record store schema](/public/record_schema.png)
+![record store schema image](/public/record_schema.png)
 
 ## Known Bugs
 * _No known issues_
